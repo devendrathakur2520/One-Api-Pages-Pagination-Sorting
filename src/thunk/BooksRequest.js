@@ -42,9 +42,10 @@ const client = axios.create({
 
 
 
-  export const MovieQuoteRequest = (_id) => async (dispatch) => {
+  export const MovieQuoteRequest = (id) => async (dispatch) => {
+    console.log(id)
     try {
-      const response = await client.get(`/movie/${_id}/quote`);
+      const response = await client.get(`/movie/${id}/quote`);
       dispatch(getMovieQuote(response.data.docs));
     } catch (err) {
       // logs the error whatever error occured in try block

@@ -10,8 +10,6 @@ export const Movie=(prop)=>{
     const {id}=useParams()
  const dispatch=useDispatch();
  const AllMovie=useSelector((state)=>state.ApiData.movie)
- console.log(AllMovie)
-
 
 useEffect(()=>{
     dispatch(MovieRequest())
@@ -29,7 +27,8 @@ return(
     <tr>
       <th>Id</th>
       <th>Movie Name</th>
-     
+      <th>BudgetInMillions</th>
+      <th>RuntimeInMinutes</th>
     </tr>
   </thead>
   <tbody>
@@ -37,7 +36,9 @@ return(
     <tr>
       <td>{movie._id}</td>
       <td>{movie.name}</td>
-      <td> <Link className="btn btn-primary" to={`/movie/${movie._id}/quotes`}>MovieQuote</Link></td>
+      <td>{movie.budgetInMillions}</td>
+      <td>{movie.runtimeInMinutes}</td>
+      <td> <Link className="btn btn-primary" to={`/MovieQuote/${movie._id}`}>MovieQuote</Link></td>
     </tr>
     ))}
     </tbody>
